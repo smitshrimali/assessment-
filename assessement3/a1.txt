@@ -1,0 +1,121 @@
+● Write SQL query to solve the problem given below 
+Consider a  scenario in which you have to create a table called Nobel_win where you 
+have given the information about the entity who has achieved nobel prize in a particular 
+subject all over the world. 
+Over here the table Nobel_win will contain attributes like year, subject, winner, country and 
+category 
+You need to use the sql commands to create the table given and to solve the problem given 
+below. 
+Eg : 
+Now make sure to solve the following query : 
+● Write sql query to find the nobel prize winners of the year 1970. Return year,subject 
+and winner 
+● Write sql query to find the nobel prize winners in chemistry between the years 1965 
+and 1975. Begin and end values are includedReturn year, subject, winner and 
+country 
+● Write sql query to retrieve the details of the winners whose first name matches with 
+the string ‘Louis’. Return year,subject,winner,country 
+● Write sql query to find Nobel prize winners for the subject that does not begin with 
+the letter ‘P’. Order the result by year, descending and winner in ascending 
+● Write sql query to find the details of 1970 Nobel prize winners. Order the result by 
+subject, ascending except for ‘Chemistry’   and ‘Economics’ which will come at the 
+end of the result set. Return year, subject, winner , country and category. 
+
+Make sure to make your clean and clear code 
+
+
+
+step-1
+
+CREATE DATABASE NobelDB;
+
+
+step-2 
+
+USE NobelDB;
+
+
+step-3
+
+CREATE TABLE Nobel_win
+(
+    year INT,
+    subject VARCHAR(50),
+    winner VARCHAR(100),
+    country VARCHAR(50),
+    category VARCHAR(50)
+);
+
+
+step-4
+
+INSERT INTO Nobel_win
+(year, subject, winner, country, category)
+VALUES
+(1970,'Physics','Hannes Alfven','Sweden','Scientist'),
+(1970,'Chemistry','Luis Federico Leloir','Argentina','Scientist'),
+(1970,'Economics','Paul Samuelson','USA','Economist'),
+(1970,'Peace','Norman Borlaug','USA','Peace'),
+(1965,'Chemistry','Robert Burns Woodward','USA','Scientist'),
+(1968,'Chemistry','Lars Onsager','Norway','Scientist'),
+(1972,'Chemistry','Christian B. Anfinsen','USA','Scientist'),
+(1975,'Chemistry','John Cornforth','Australia','Scientist'),
+(1962,'Literature','John Steinbeck','USA','Author'),
+(1980,'Peace','Adolfo Perez Esquivel','Argentina','Peace'),
+(1903,'Physics','Louis de Broglie','France','Scientist'),
+(1995,'Medicine','Louis J. Ignarro','USA','Scientist');
+
+
+Query 1
+Find the Nobel Prize winners of the year 1970.
+
+SELECT year, subject, winner
+FROM Nobel_win
+WHERE year = 1970;
+
+
+Query 2
+Find the Nobel Prize winners in Chemistry between 1965 and 1975 (inclusive).
+
+
+SELECT year, subject, winner, country
+FROM Nobel_win
+WHERE subject = 'Chemistry'
+AND year BETWEEN 1965 AND 1975;
+
+
+Query 3
+Retrieve the details of winners whose first name is Louis.
+
+SELECT year, subject, winner, country
+FROM Nobel_win
+WHERE winner LIKE 'Louis%';
+
+
+Query 4
+Find Nobel Prize winners for subjects that do not begin with the letter 'P'.
+
+
+SELECT *
+FROM Nobel_win
+WHERE subject NOT LIKE 'P%'
+ORDER BY year DESC, winner ASC;
+
+
+Query 5
+Find details of 1970 Nobel Prize winners.
+
+SELECT year, subject, winner, country, category
+FROM Nobel_win
+WHERE year = 1970
+ORDER BY
+CASE
+    WHEN subject = 'Chemistry' THEN 1
+    WHEN subject = 'Economics' THEN 2
+    ELSE 0
+END,
+subject ASC;
+
+
+
+ 

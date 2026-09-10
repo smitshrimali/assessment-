@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profiles</title>
+</head>
+
+<body>
+
+<h2>User Profiles</h2>
+
+<ul>
+
+{% for profile in profiles %}
+
+<li>
+
+{{ profile.username }}
+
+-
+
+{{ profile.age }}
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</body>
+</html>
