@@ -1,0 +1,1 @@
+I tested the AI-generated version and found that repeated runs could create duplicate favourite IDs. The original also did not check response.ok, so HTTP errors were not handled correctly. I corrected the program by validating the response, removing duplicate IDs with Set, safely reading localStorage, and improving the console messages.

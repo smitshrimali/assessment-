@@ -1,0 +1,15 @@
+"use strict";
+const restaurantName="Spice Garden";
+const cuisineType="Indian";
+const averageRating=4.5;
+const isOpen=true;
+const status=isOpen?"Open Now":"Closed";
+const profile=`${restaurantName} | ${cuisineType} | Rating: ${averageRating} | ${status}`;
+console.clear();
+console.log("========================================");
+console.log("TASK 1 — RESTAURANT PROFILE");
+console.log("========================================");
+console.log(profile);
+const restaurant={restaurantName,cuisineType,averageRating,isOpen};
+console.log("\nJSON OUTPUT:");
+console.log(JSON.stringify(restaurant,null,2));
